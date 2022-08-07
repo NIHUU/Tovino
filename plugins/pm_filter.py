@@ -60,7 +60,6 @@ async def next_page(bot, query):
     if not files:
         return
     settings = await get_settings(query.message.chat.id)
-    pre = 'Chat' if settings['redirect_to'] == 'Chat' else 'files'
 
     if settings['button']:
         btn = [
@@ -922,12 +921,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
                 ],
                 [
-                    InlineKeyboardButton( 'Redirect To',
-                                         callback_data=f'setgs#redirect_to#{settings["redirect_to"]}#{grp_id}',),
-                    InlineKeyboardButton('👤 PM' if settings["redirect_to"] == "PM" else '📄 Chat',
-                                         callback_data=f'setgs#redirect_to#{settings["redirect_to"]}#{grp_id}',),
-                ],
-                [
                     InlineKeyboardButton('Bot PM', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                     InlineKeyboardButton('✅ Yes' if settings["botpm"] else '❌ No',
                                          callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
@@ -988,7 +981,6 @@ async def auto_filter(client, msg, spoll=False):
         search, files, offset, total_results = spoll
     
     pre = 'filep' if settings['file_secure'] else 'file'
-    pre = 'Chat' if settings['redirect_to'] == 'Chat' else pre
 
     if settings["button"]:
         btn = [
