@@ -65,7 +65,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"▫ {get_size(file.file_size)}  ‣  {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
+                    text=f"▫ {get_size(file.file_size)}  ‣  {file.file_name}", callback_data=f'files#{file.file_id}#{query.from_user.id}'
                 )
             ] 
             for file in files
@@ -1015,7 +1015,7 @@ async def auto_filter(client, msg, spoll=False):
             [
                 InlineKeyboardButton(
                         text=f"▫ {get_size(file.file_size)}  ‣  {file.file_name}", 
-                        callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
+                        callback_data=f'files#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
                 )
             ] 
             for file in files
