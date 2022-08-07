@@ -66,7 +66,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"📂 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
+                    text=f"▫ {get_size(file.file_size)}  ‣  {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 )
             ] 
             for file in files
@@ -103,7 +103,7 @@ async def next_page(bot, query):
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
-             InlineKeyboardButton(f"📃 Pages {round(int(offset) / 10) + 1} / {round(total / 10)}",
+             InlineKeyboardButton(f"Pᴀɢᴇs {round(int(offset) / 10) + 1} / {round(total / 10)}",
                                   callback_data="pages")]
         )
     elif off_set is None:
@@ -994,7 +994,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                        text=f"📂 [{get_size(file.file_size)}] {file.file_name}", 
+                        text=f"▫ {get_size(file.file_size)}  ‣  {file.file_name}", 
                         callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
                 )
             ] 
